@@ -1,0 +1,342 @@
+:root {
+    --bg: #0f1115;
+    --panel: #161a22;
+    --text: #e8eaed;
+    --muted: #9aa0a6;
+    --accent: #ff6b35;
+    --state-fill: #1f2530;
+    --state-stroke: #3a4151;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+header {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 1rem;
+}
+
+header h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+}
+
+header .lede {
+    margin: 0;
+    color: var(--muted);
+    max-width: 60ch;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+}
+
+#controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem 1.5rem;
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+    align-items: start;
+}
+
+.filter > label {
+    display: block;
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.range-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.filter input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.range-readout {
+    margin-top: 0.4rem;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.95rem;
+}
+
+.range-readout .dash {
+    color: var(--muted);
+    margin: 0 0.25rem;
+}
+
+.checkbox-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.checkbox-row label {
+    color: var(--text);
+    font-size: 0.95rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.checkbox-row input[type="checkbox"] {
+    accent-color: var(--accent);
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}
+
+.result-count .count-display {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.result-count strong {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 1.4rem;
+    font-variant-numeric: tabular-nums;
+    margin-right: 0.25rem;
+}
+
+.result-count .of {
+    margin: 0 0.25rem;
+}
+
+#viz {
+    background: var(--panel);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 0 0 2rem;
+}
+
+#timeline-wrap {
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--state-stroke);
+    padding-top: 0.75rem;
+}
+
+.timeline-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 0.25rem 0.4rem;
+}
+
+.timeline-title {
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.timeline-hint {
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+#timeline svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#timeline .axis text {
+    fill: var(--muted);
+    font-size: 10px;
+}
+
+#timeline .axis line,
+#timeline .axis path {
+    stroke: var(--state-stroke);
+}
+
+#timeline .bar {
+    transition: fill 200ms;
+}
+
+#timeline .brush .selection {
+    fill: var(--accent);
+    fill-opacity: 0.15;
+    stroke: var(--accent);
+    stroke-width: 1px;
+}
+
+#timeline .brush .handle {
+    fill: var(--accent);
+}
+
+#map {
+    width: 100%;
+}
+
+#map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.state {
+    fill: var(--state-fill);
+    stroke: var(--state-stroke);
+    stroke-width: 1px;
+}
+
+.counties path {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 0.5;
+    pointer-events: none;
+}
+
+.region-labels {
+    pointer-events: none;
+}
+
+.region-label {
+    fill: rgba(255, 255, 255, 0.35);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    paint-order: stroke fill;
+    stroke: rgba(0, 0, 0, 0.5);
+    stroke-width: 2.5px;
+    font-family: inherit;
+}
+
+.city-labels {
+    pointer-events: none;
+}
+
+.city-dot {
+    fill: #ffffff;
+    stroke: rgba(0, 0, 0, 0.6);
+    stroke-width: 0.6;
+}
+
+.city-name {
+    fill: #ffffff;
+    font-size: 11px;
+    font-weight: 500;
+    paint-order: stroke fill;
+    stroke: rgba(0, 0, 0, 0.7);
+    stroke-width: 3px;
+    font-family: inherit;
+}
+
+.fire {
+    fill-opacity: 0.7;
+    stroke: none;
+    cursor: pointer;
+    transition: fill-opacity 150ms;
+}
+
+.legend {
+    pointer-events: none;
+}
+
+.legend text {
+    fill: var(--text);
+    font-size: 11px;
+    font-family: inherit;
+}
+
+.legend .legend-bg {
+    fill: rgba(15, 17, 21, 0.7);
+    stroke: var(--state-stroke);
+    stroke-width: 0.5;
+    rx: 6;
+}
+
+.legend .legend-title {
+    font-size: 12px;
+    font-weight: 600;
+    fill: var(--text);
+}
+
+.legend .axis text {
+    fill: var(--muted);
+    font-size: 10px;
+}
+
+.legend .axis line {
+    stroke: var(--muted);
+}
+
+.legend .domain {
+    display: none;
+}
+
+.tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(22, 26, 34, 0.92);
+    border: 1px solid var(--state-stroke);
+    border-radius: 8px;
+    padding: 0.6em 0.9em;
+    font-size: 0.85rem;
+    color: var(--text);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.2em 0.75em;
+    margin: 0;
+    z-index: 1000;
+    transition: opacity 150ms;
+}
+
+.tooltip dt {
+    color: var(--muted);
+    font-weight: 400;
+    margin: 0;
+}
+
+.tooltip dd {
+    margin: 0;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.tooltip[hidden] {
+    display: none;
+}
+
+#writeup {
+    color: var(--muted);
+}
+
+#writeup h2 {
+    color: var(--text);
+}

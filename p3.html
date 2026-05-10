@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>California's Shifting Fire Footprint, 2000-2025</title>
+    <link rel="stylesheet" href="p3.css">
+    <script src="p3.js" type="module"></script>
+</head>
+<body>
+    <header>
+        <h1>California's Shifting Fire Footprint</h1>
+        <p class="lede">
+            A quarter century of MODIS Terra thermal anomalies across California's
+            wildfire seasons (August 1 - October 31, 2000 through 2025).
+        </p>
+    </header>
+
+    <main>
+        <section id="controls">
+            <div class="filter year-filter">
+                <label>Year range</label>
+                <div class="range-stack">
+                    <input type="range" id="year-min" min="2000" max="2025" value="2000" step="1">
+                    <input type="range" id="year-max" min="2000" max="2025" value="2025" step="1">
+                </div>
+                <div class="range-readout">
+                    <span id="year-min-display">2000</span>
+                    <span class="dash">–</span>
+                    <span id="year-max-display">2025</span>
+                </div>
+            </div>
+
+            <div class="filter">
+                <label for="frp-min">Min FRP (MW)</label>
+                <input type="range" id="frp-min" min="0" max="200" value="0" step="1">
+                <div class="range-readout">
+                    <span id="frp-min-display">0</span> MW or higher
+                </div>
+            </div>
+
+            <div class="filter">
+                <label>Time of day</label>
+                <div class="checkbox-row">
+                    <label><input type="checkbox" id="dn-day" checked> Daytime</label>
+                    <label><input type="checkbox" id="dn-night" checked> Nighttime</label>
+                </div>
+            </div>
+
+            <div class="filter result-count">
+                <label>Showing</label>
+                <div class="count-display">
+                    <strong id="match-count">–</strong>
+                    <span class="of">of</span>
+                    <span id="total-count">–</span>
+                    fires
+                </div>
+            </div>
+        </section>
+
+        <section id="viz">
+            <div id="map"></div>
+            <div id="timeline-wrap">
+                <div class="timeline-header">
+                    <span class="timeline-title">Fire detections by year</span>
+                    <span class="timeline-hint">Drag to brush a date range • Click outside the brush to clear</span>
+                </div>
+                <div id="timeline"></div>
+            </div>
+        </section>
+
+        <section id="writeup">
+            <h2>About this visualization</h2>
+            <p>Write-up coming soon.</p>
+        </section>
+    </main>
+
+    <dl id="fire-tooltip" class="tooltip" hidden>
+        <dt>Date</dt><dd id="t-date"></dd>
+        <dt>Time (UTC)</dt><dd id="t-time"></dd>
+        <dt>Day / Night</dt><dd id="t-daynight"></dd>
+        <dt>FRP</dt><dd id="t-frp"></dd>
+        <dt>Brightness</dt><dd id="t-brightness"></dd>
+        <dt>Confidence</dt><dd id="t-confidence"></dd>
+        <dt>Lat, Lon</dt><dd id="t-coords"></dd>
+    </dl>
+</body>
+</html>
