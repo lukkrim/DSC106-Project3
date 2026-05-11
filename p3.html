@@ -11,31 +11,21 @@
     <header>
         <h1>California's Shifting Fire Footprint</h1>
         <p class="lede">
-            A quarter century of MODIS Terra thermal anomalies across California's
-            wildfire seasons (August 1 - October 31, 2000 through 2025).
+            A quarter century of MODIS Terra thermal anomalies across California's wildfire seasons (August 1 - October 31, 2000 through 2025).
         </p>
+        <p class="filter-note">FRP is fire radiative power, a proxy for fire intensity.</p>
     </header>
 
     <main>
         <section id="controls">
-            <div class="filter year-filter">
-                <label>Year range</label>
-                <div class="range-stack">
-                    <input type="range" id="year-min" min="2000" max="2025" value="2000" step="1">
-                    <input type="range" id="year-max" min="2000" max="2025" value="2025" step="1">
-                </div>
-                <div class="range-readout">
-                    <span id="year-min-display">2000</span>
-                    <span class="dash">–</span>
-                    <span id="year-max-display">2025</span>
-                </div>
-            </div>
-
             <div class="filter">
-                <label for="frp-min">Min FRP (MW)</label>
-                <input type="range" id="frp-min" min="0" max="200" value="0" step="1">
+                <label for="frp-min">FRP range (MW)</label>
+                <div class="range-stack">
+                    <input type="range" id="frp-min" min="0" max="500" value="0" step="1">
+                    <input type="range" id="frp-max" min="0" max="500" value="500" step="1">
+                </div>
                 <div class="range-readout">
-                    <span id="frp-min-display">0</span> MW or higher
+                    <span id="frp-range-display">0 - 500 MW</span>
                 </div>
             </div>
 
@@ -58,15 +48,14 @@
             </div>
         </section>
 
-        <section id="viz">
-            <div id="map"></div>
+        <section id="viz-container">
             <div id="timeline-wrap">
                 <div class="timeline-header">
                     <span class="timeline-title">Fire detections by year</span>
-                    <span class="timeline-hint">Drag to brush a date range • Click outside the brush to clear</span>
                 </div>
                 <div id="timeline"></div>
             </div>
+            <div id="map"></div>
         </section>
 
         <section id="writeup">
