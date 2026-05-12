@@ -59,9 +59,30 @@
         </section>
 
         <section id="writeup">
-            <h2>About this visualization</h2>
-            <p>Write-up coming soon.</p>
-        </section>
+        <h2>About this visualization</h2>
+
+        <h3>Design rationale</h3>
+        <p>
+            Our visualization shows how California fire activity has changed from 2000 to 2025 during wildfire season. We used a map because fire data is spatial and seeing each detection on the map makes it easier to notice where fires cluster across the state.
+        </p>
+        <p>
+            Color shows fire radiative power which is a rough measure of fire intensity. Brighter colors mean stronger fire detections and we also included a bar chart by year so users can quickly see which years had more fire detections.
+        </p>
+        <p>
+            The filters let users focus on certain fire strengths and compare daytime versus nighttime detections. We considered using a heatmap but individual points made the data feel more direct and easier to interpret. We also considered a year slider, but showing all years together made the overall pattern easier to compare.
+        </p>
+
+        <h3>Development process</h3>
+        <p>
+            We started by cleaning the MODIS Terra fire detection data and filtering it to California from August 1 to October 31 for 2000 through 2025. Then we built the main map, the yearly bar chart, and the controls.
+        </p>
+        <p>
+            The work was split evenly between data cleaning, designing the map, building the charts, making sure interacting worked, and styling. There were 4 of us and each person probably spent around 3 to 5 hours on the project.
+        </p>
+        <p>
+            The parts that took the most time were getting the filters to update everything correctly and making the page look polished. It also took awhile to figure out how to get the data.
+        </p>
+    </section>
     </main>
 
     <dl id="fire-tooltip" class="tooltip" hidden>
