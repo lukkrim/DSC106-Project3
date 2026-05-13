@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,13 @@
     <link rel="stylesheet" href="p3.css">
     <script src="p3.js" type="module"></script>
 </head>
+
 <body>
     <header>
         <h1>California's Shifting Fire Footprint</h1>
         <p class="lede">
-            A quarter century of MODIS Terra thermal anomalies across California's wildfire seasons (August 1 - October 31, 2000 through 2025).
+            A quarter century of MODIS Terra thermal anomalies across California's wildfire seasons (August 1 - October
+            31, 2000 through 2025).
         </p>
         <p class="filter-note">FRP is fire radiative power, a proxy for fire intensity.</p>
     </header>
@@ -60,7 +63,7 @@
 
         <section id="writeup">
             <h2>About this visualization</h2>
-        
+
             <h3>Design rationale</h3>
             <p>
                 This visualization explores how California fire activity changed during wildfire season
@@ -68,15 +71,18 @@
                 spatial: plotting each thermal anomaly by latitude and longitude makes it easier to see
                 where fire activity clusters across Southern California.
             </p>
-        
+
             <p>
                 We considered grouping the data primarily by year, but we ultimately chose fire radiative
                 power (FRP) as the main visual encoding. FRP acts as a proxy for fire intensity, so coloring
                 points by FRP helps viewers distinguish weaker and stronger thermal anomalies directly on
                 the map. The color scale uses darker colors for lower FRP values and brighter yellow-orange
                 colors for stronger detections, matching the actual visual of fire in different temperatures.
+                We binned FRP into five discrete steps, following what we learned in class about
+                discriminability: most continuous variations in stimuli are perceived in discrete steps,
+                so a small number of bins makes differences easier to see without overwhelming the viewer.
             </p>
-        
+
             <p>
                 The interaction techniques are designed to support focused exploration. The FRP range slider
                 lets users filter by fire intensity, while the daytime/nighttime checkboxes allow comparison
@@ -84,14 +90,18 @@
                 few extreme FRP outliers would otherwise stretch the scale and make most detections difficult
                 to filter meaningfully.
             </p>
-        
+
             <p>
-                The vertical timeline shows fire detections over time and includes brush filtering, allowing
-                users to select a specific date range and immediately update the map. We also added tooltips
+                The vertical timeline shows fire detections over time and includes brush filtering, allowing users to
+                select a specific date range and immediately update the map. The brushing interaction makes temporal
+                clusters easier to notice and supports quick comparisons across different windows without leaving the
+                spatial context.
+
+                We also added tooltips
                 so users can inspect individual detections, including date, time, FRP, brightness, confidence,
                 and coordinates.
             </p>
-        
+
             <h3>Development process</h3>
             <p>
                 We began by retrieving MODIS Terra thermal anomaly data from the NASA GIBS API and cleaning
@@ -99,20 +109,20 @@
                 used geographic boundary tools to render the California map, added county outlines and major
                 city labels for context, and plotted each fire detection using its latitude and longitude.
             </p>
-        
+
             <p>
                 After building the base map, we added visual encodings for fire intensity, including the FRP
                 color scale and legend. We then implemented the main interactions: FRP filtering,
                 daytime/nighttime filtering, tooltip inspection, and timeline brush filtering. Finally, we
                 refined the page layout and styling to make the visualization easier to read and interact with.
             </p>
-        
+
             <p>
                 The work was divided across data collection and cleaning, map rendering, interaction design,
                 chart implementation, and styling/debugging. With four team members, we estimate that the
                 project took about 12 to 20 total people-hours.
             </p>
-        
+
             <p>
                 The most time-consuming parts were getting the filters to update the map correctly and
                 adjusting the SVG layout. Because the visualization combines multiple filters—FRP range,
@@ -124,13 +134,21 @@
     </main>
 
     <dl id="fire-tooltip" class="tooltip" hidden>
-        <dt>Date</dt><dd id="t-date"></dd>
-        <dt>Time (UTC)</dt><dd id="t-time"></dd>
-        <dt>Day / Night</dt><dd id="t-daynight"></dd>
-        <dt>FRP</dt><dd id="t-frp"></dd>
-        <dt>Brightness</dt><dd id="t-brightness"></dd>
-        <dt>Confidence</dt><dd id="t-confidence"></dd>
-        <dt>Lat, Lon</dt><dd id="t-coords"></dd>
+        <dt>Date</dt>
+        <dd id="t-date"></dd>
+        <dt>Time (UTC)</dt>
+        <dd id="t-time"></dd>
+        <dt>Day / Night</dt>
+        <dd id="t-daynight"></dd>
+        <dt>FRP</dt>
+        <dd id="t-frp"></dd>
+        <dt>Brightness</dt>
+        <dd id="t-brightness"></dd>
+        <dt>Confidence</dt>
+        <dd id="t-confidence"></dd>
+        <dt>Lat, Lon</dt>
+        <dd id="t-coords"></dd>
     </dl>
 </body>
+
 </html>

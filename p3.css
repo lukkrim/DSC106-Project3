@@ -41,6 +41,14 @@ header .lede {
     color: var(--muted);
 }
 
+header .filter-note {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
 main {
     max-width: 68.75rem;
     margin: 0 auto;
