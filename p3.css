@@ -357,6 +357,10 @@ main {
     color: var(--text);
 }
 
+#writeup h3 {
+    color: var(--text);
+}
+
 /* Better layout for smaller screens */
 @media (max-width: 48rem) {
     #viz-container {

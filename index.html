@@ -59,30 +59,68 @@
         </section>
 
         <section id="writeup">
-        <h2>About this visualization</h2>
-
-        <h3>Design rationale</h3>
-        <p>
-            Our visualization shows how California fire activity has changed from 2000 to 2025 during wildfire season. We used a map because fire data is spatial and seeing each detection on the map makes it easier to notice where fires cluster across the state.
-        </p>
-        <p>
-            Color shows fire radiative power which is a rough measure of fire intensity. Brighter colors mean stronger fire detections and we also included a bar chart by year so users can quickly see which years had more fire detections.
-        </p>
-        <p>
-            The filters let users focus on certain fire strengths and compare daytime versus nighttime detections. We considered using a heatmap but individual points made the data feel more direct and easier to interpret. We also considered a year slider, but showing all years together made the overall pattern easier to compare.
-        </p>
-
-        <h3>Development process</h3>
-        <p>
-            We started by cleaning the MODIS Terra fire detection data and filtering it to California from August 1 to October 31 for 2000 through 2025. Then we built the main map, the yearly bar chart, and the controls.
-        </p>
-        <p>
-            The work was split evenly between data cleaning, designing the map, building the charts, making sure interacting worked, and styling. There were 4 of us and each person probably spent around 3 to 5 hours on the project.
-        </p>
-        <p>
-            The parts that took the most time were getting the filters to update everything correctly and making the page look polished. It also took awhile to figure out how to get the data.
-        </p>
-    </section>
+            <h2>About this visualization</h2>
+        
+            <h3>Design rationale</h3>
+            <p>
+                This visualization explores how California fire activity changed during wildfire season
+                from 2000 to 2025. We used a map as the main view because fire detections are inherently
+                spatial: plotting each thermal anomaly by latitude and longitude makes it easier to see
+                where fire activity clusters across Southern California.
+            </p>
+        
+            <p>
+                We considered grouping the data primarily by year, but we ultimately chose fire radiative
+                power (FRP) as the main visual encoding. FRP acts as a proxy for fire intensity, so coloring
+                points by FRP helps viewers distinguish weaker and stronger thermal anomalies directly on
+                the map. The color scale uses darker colors for lower FRP values and brighter yellow-orange
+                colors for stronger detections, matching the actual visual of fire in different temperatures.
+            </p>
+        
+            <p>
+                The interaction techniques are designed to support focused exploration. The FRP range slider
+                lets users filter by fire intensity, while the daytime/nighttime checkboxes allow comparison
+                between detections made at different times of day. We capped the slider at 500+ MW because a
+                few extreme FRP outliers would otherwise stretch the scale and make most detections difficult
+                to filter meaningfully.
+            </p>
+        
+            <p>
+                The vertical timeline shows fire detections over time and includes brush filtering, allowing
+                users to select a specific date range and immediately update the map. We also added tooltips
+                so users can inspect individual detections, including date, time, FRP, brightness, confidence,
+                and coordinates.
+            </p>
+        
+            <h3>Development process</h3>
+            <p>
+                We began by retrieving MODIS Terra thermal anomaly data from the NASA GIBS API and cleaning
+                it to focus on California wildfire-season detections from August 1 to October 31. We then
+                used geographic boundary tools to render the California map, added county outlines and major
+                city labels for context, and plotted each fire detection using its latitude and longitude.
+            </p>
+        
+            <p>
+                After building the base map, we added visual encodings for fire intensity, including the FRP
+                color scale and legend. We then implemented the main interactions: FRP filtering,
+                daytime/nighttime filtering, tooltip inspection, and timeline brush filtering. Finally, we
+                refined the page layout and styling to make the visualization easier to read and interact with.
+            </p>
+        
+            <p>
+                The work was divided across data collection and cleaning, map rendering, interaction design,
+                chart implementation, and styling/debugging. With four team members, we estimate that the
+                project took about 12 to 20 total people-hours.
+            </p>
+        
+            <p>
+                The most time-consuming parts were getting the filters to update the map correctly and
+                adjusting the SVG layout. Because the visualization combines multiple filters—FRP range,
+                daytime/nighttime status, and brushed time range—we had to make sure they worked together
+                consistently. The map layout also required extra adjustment because the original SVG canvas
+                left too much empty space below the map.
+            </p>
+        </section>
     </main>
 
     <dl id="fire-tooltip" class="tooltip" hidden>
